@@ -1,6 +1,10 @@
+% documentaciÃ³n de IARSAC en LaTeX
+% use:
+%  pdflatex iarsac-doc.tex 
+% para generar la documentaciÃ³n en PDF
+
 \documentclass[spanish]{article}
-\usepackage[T1]{fontenc}
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage{amssymb}
 \usepackage{html}
 \IfFileExists{url.sty}{\usepackage{url}}
@@ -16,47 +20,47 @@
 \makeatother
 \begin{document}
 
-\title{IARSAC: Implementación del Algoritmo RSA en C++ - Versión 0.2}
+\title{IARSAC: ImplementaciÃ³n del Algoritmo RSA en C++ - VersiÃ³n 0.2}
 
 
-\author{Pablo De Nápoli}
+\author{Pablo De NÃ¡poli}
 
 \maketitle
 
-\section{Introducción}
+\section{IntroducciÃ³n}
 
-\subsection*{Propósito de IARSAC}
+\subsection*{PropÃ³sito de IARSAC}
 
-RSA es uno de los algoritmos de criptografía de clave pública (o de
-claves asimétricas) más utilizados. Fue desarrollado por Ronald Rivest,
+RSA es uno de los algoritmos de criptografÃ­a de clave pÃºblica (o de
+claves asimÃ©tricas) mÃ¡s utilizados. Fue desarrollado por Ronald Rivest,
 Adi Shamir, and Leonard en 1977 (\cite{Rsa78}. El nombre de este
 algoritmo corresponde a las letras iniciales de cada uno de sus 
-creadores. Para una descripción matemática, ver \cite{K}.
+creadores. Para una descripciÃ³n matemÃ¡tica, ver \cite{K}.
 
-IARSAC es una implementación del algoritmo RSA en C++ (como una clase).
-Está diseñado para ser una implementación minimalista con propósitos
-didácticos (para aquellos que deseen aprender como funciona el algoritmo
+IARSAC es una implementaciÃ³n del algoritmo RSA en C++ (como una clase).
+EstÃ¡ diseÃ±ado para ser una implementaciÃ³n minimalista con propÃ³sitos
+didÃ¡cticos (para aquellos que deseen aprender como funciona el algoritmo
 RSA).
 
-IARSAC no es una implementación segura, y no se recomienda su uso
-para ninguna aplicación donde la seguridad de sus datos sea importante
+IARSAC no es una implementaciÃ³n segura, y no se recomienda su uso
+para ninguna aplicaciÃ³n donde la seguridad de sus datos sea importante
 (para tales aplicaciones usted puede utilizar 
 \htmladdnormallink{GPG: The GNU Privacy Guard}{http://www.gnupg.org/})
 
 \subsection*{Requerimientos}
 
-IARSAC utiliza la librería \htmladdnormallink{NTL}{http://www.shoup.net/ntl/} 
-(una librería para teoría de números), que también se distribuye bajo 
-la Licencia Pública GNU.
+IARSAC utiliza la librerÃ­a \htmladdnormallink{NTL}{http://www.shoup.net/ntl/} 
+(una librerÃ­a para teorÃ­a de nÃºmeros), que tambiÃ©n se distribuye bajo 
+la Licencia PÃºblica GNU.
 
 Adicionalmente (dependiendo de como compile NTL) es posible que necesite
-la librería GNU MP (Multiple Precision Library).
+la librerÃ­a GNU MP (Multiple Precision Library).
 
 IARSAC solamente ha sido probado bajo GNU/Linux, y es probable que la 
-implementación de la función random\_seed (que usa el dispositivo /dev/random, 
-el generador de números aleatorios del kernel) para inicializar 
-el generador de números aleatorios de NTL sea no portable a otros
-sistemas (pero podría implementarse de otra forma).
+implementaciÃ³n de la funciÃ³n random\_seed (que usa el dispositivo /dev/random, 
+el generador de nÃºmeros aleatorios del kernel) para inicializar 
+el generador de nÃºmeros aleatorios de NTL sea no portable a otros
+sistemas (pero podrÃ­a implementarse de otra forma).
 
 Para compilarlo (yo lo he probado usando gcc-3.3.2, ntl 5.3 y gmp 4.1.2) 
 hay que usar una orden como
@@ -67,15 +71,15 @@ g++ iarsac.cpp  -fpermissive -lntl -lgmp -lm -o iarsac
 
 \subsection*{Licencia}
 
-IARSAC se distribuye bayo la Licencia Pública GNU (GNU General Public
-Licence), de la Free Software Foundation (versión 2 o posterior).
-No existe ningún tipo de garantía (ni siquiera garantías implícitas
-de utilidad o adecuación para algún propósito).
+IARSAC se distribuye bayo la Licencia PÃºblica GNU (GNU General Public
+Licence), de la Free Software Foundation (versiÃ³n 2 o posterior).
+No existe ningÃºn tipo de garantÃ­a (ni siquiera garantÃ­as implÃ­citas
+de utilidad o adecuaciÃ³n para algÃºn propÃ³sito).
 
 \subsection*{Patentes }
 
 RSA fue durante un tiempo un algoritmo patentado (U.S. Patent 4,405,829),
-pero esta patente expiró el 2 de septiembre de 2000 (ver 
+pero esta patente expirÃ³ el 2 de septiembre de 2000 (ver 
 \htmladdnormallink{http://www.rsasecurity.com/rsalabs/faq/6-3-1.html}
 {http://www.rsasecurity.com/rsalabs/faq/6-3-1.html}).
 
@@ -91,10 +95,10 @@ IARSAC acepta las siguientes opciones
 -g --generar-claves-para:   
 \end{verbatim}
 
-genera las claves pública y privada para un usuario, 
+genera las claves pÃºblica y privada para un usuario, 
 que se graban en los archivos nombre\_de\_usuario.clave\_publica y 
 nombre\_de\_usuario.clave\_privada. Se puede especificar una longitud de clave 
-con la opción -l (la longitud de clave por defecto es de 100)
+con la opciÃ³n -l (la longitud de clave por defecto es de 100)
 
 ejemplo:
 
@@ -125,7 +129,7 @@ Alicia.clave\_privada en el directorio actual.
 \end{verbatim}
 
 Cifra la entrada (del standar input) y envia el texto encriptado al 
-standard output, utilizando la clave pública del usuario especificado
+standard output, utilizando la clave pÃºblica del usuario especificado
 (que debe estar contenida en el archivo nombre\_de\_usuario.clave\_publica en
 el directorio actual). Como el texto encriptado 
 suele ser no legible para los humanos, es conveniente redireccionar la salida 
@@ -136,10 +140,10 @@ ejemplo:
 iarsac -c Alicia < mi_texto_plano.txt > mi_texto_encriptado.bin
 \end{verbatim}
 
-En este sentido, IARSAC sigue los estándares del mundo de Unix.
+En este sentido, IARSAC sigue los estÃ¡ndares del mundo de Unix.
 
 Si se desea enviar los mensajes encriptados por e-mail, se
-puede combinarlo con el comando uuencode por medio de una tubería
+puede combinarlo con el comando uuencode por medio de una tuberÃ­a
 (pipe):
 
 ejemplo:
@@ -162,7 +166,7 @@ por ejemplo Alicia para leer el mensaje encriptado anteriormente
 usaria:
 
 Si se desea desencriptar un mensaje codificado con uuencode como en el
-ejemplo anterior usar uudecode y una tubería (pipe):
+ejemplo anterior usar uudecode y una tuberÃ­a (pipe):
 
 \begin{verbatim}
 uudecode mi_texto_encriptado.txt | iarsac -d Alicia > mi_texto_desencriptado.txt
@@ -178,10 +182,10 @@ Muestra un mensaje de ayuda sobre las opciones de IARSAC.
 
 \item
 \begin{verbatim} 
--L --license muestra información sobre la licencia GPL 
+-L --license muestra informaciÃ³n sobre la licencia GPL 
 \end{verbatim}
 
-Muestra información sobre la licencia GPL 
+Muestra informaciÃ³n sobre la licencia GPL 
 
 \item 
 \begin{verbatim}
@@ -195,12 +199,12 @@ Permite especificar la longitud de clave a utilizar.
 -v --verbose 
 \end{verbatim}
 
-Muestra información adicional sobre el funcionamiento interno del programa. Es
-util para propósitos de debugging (corrección de errores) o para analizar el
-funcionamiento del programa con fines didácticos.
+Muestra informaciÃ³n adicional sobre el funcionamiento interno del programa. Es
+util para propÃ³sitos de debugging (correcciÃ³n de errores) o para analizar el
+funcionamiento del programa con fines didÃ¡cticos.
 
-Para mostrar dicha información se usa el standard error (con lo que no 
-afecta la redirección del standard output)
+Para mostrar dicha informaciÃ³n se usa el standard error (con lo que no 
+afecta la redirecciÃ³n del standard output)
 
 \end{itemize}
 
@@ -209,7 +213,7 @@ afecta la redirección del standard output)
 \begin{verbatim}
 
 El algoritmo RSA es implementado en IARSAC como la clase encriptador_rsa. 
-Esto permitiría utilizar dicho algoritmo en otros programas.
+Esto permitirÃ­a utilizar dicho algoritmo en otros programas.
 
 \begin{verbatim}
 class encriptador_rsa
@@ -231,7 +235,7 @@ public:
  
 private: 
 
-  // n sera el tamaño del "alfabeto" en el cual vamos a cifrar o
+  // n sera el tamaÃ±o del "alfabeto" en el cual vamos a cifrar o
   // descifrar
 
   long longitud_de_clave;
@@ -242,43 +246,43 @@ private:
 
 \end{verbatim}
 
-NOTA: esta API está en desarrollo y puede cambiar en futuras versiones de
+NOTA: esta API estÃ¡ en desarrollo y puede cambiar en futuras versiones de
 iarsac.
 
-Describiremos a continuación los distintos métodos de esta clase:
+Describiremos a continuaciÃ³n los distintos mÃ©todos de esta clase:
 
 \begin{itemize}
 
 \item encriptador\_rsa::generar\_claves:
 
-Este método genera las claves pública y privada, y el entero n. 
-Toma como parámetro la longitud de la clave que se va a generar.
+Este mÃ©todo genera las claves pÃºblica y privada, y el entero n. 
+Toma como parÃ¡metro la longitud de la clave que se va a generar.
 
 Para generar dichas claves hacemos lo siguiente:
 
 \begin{enumerate} 
 
-\item Elegimos dos números primos al azar $p$ y $q$, de la longitud especificada 
-(con la función GenPrime\_ZZ de la libreria NTL)
+\item Elegimos dos nÃºmeros primos al azar $p$ y $q$, de la longitud especificada 
+(con la funciÃ³n GenPrime\_ZZ de la libreria NTL)
 
 \begin{verbatim}
  p = GenPrime_ZZ(longitud);
  q = GenPrime_ZZ(longitud);
 \end{verbatim}
 
-\item Calculamos $n=pq$ y $\varphi(n)=(p-1)(q-1)$ ($\varphi(n)$ es la función
-de Euler que cuenta cuantos números entre 1 y n son coprimos con $n$)
+\item Calculamos $n=pq$ y $\varphi(n)=(p-1)(q-1)$ ($\varphi(n)$ es la funciÃ³n
+de Euler que cuenta cuantos nÃºmeros entre 1 y n son coprimos con $n$)
 
 \begin{verbatim}
  n = p*q;
  phi_n = (p-1)*(q-1);
 \end{verbatim} 
 
-Vamos con aritmética módulo $n$ (es decir en $\mathbb{Z}_n$)
+Vamos con aritmÃ©tica mÃ³dulo $n$ (es decir en $\mathbb{Z}_n$)
 
-\item Generamos un número al azar entre 1 y n (es decir un elemento de
-$\mathbb{Z}_n$) que no tenga factores en común (sea coprimo) con $n$. 
-Dicho número será la clave publica.
+\item Generamos un nÃºmero al azar entre 1 y n (es decir un elemento de
+$\mathbb{Z}_n$) que no tenga factores en comÃºn (sea coprimo) con $n$. 
+Dicho nÃºmero serÃ¡ la clave publica.
 
 \begin{verbatim}
  do {
@@ -286,7 +290,7 @@ Dicho número será la clave publica.
  } while (GCD(clave_publica,phi_n)!=1);
 \end{verbatim}
 
-\item La clave privada es el inverso módulo n de la clave pública:
+\item La clave privada es el inverso mÃ³dulo n de la clave pÃºblica:
 
 \begin{verbatim}
   clave_privada = InvMod(clave_publica,phi_n);  
@@ -296,31 +300,31 @@ Dicho número será la clave publica.
 
 \item encriptador\_rsa::establecer\_parametros:
 
-Este método establece los valores de los parámetros longitud\_bloque\_plano 
+Este mÃ©todo establece los valores de los parÃ¡metros longitud\_bloque\_plano 
 y longitud\_bloque\_encriptado. 
 
 \item encriptador\_rsa::cifrar
 
-Este método encripta un texto proveniente de un input stream 
+Este mÃ©todo encripta un texto proveniente de un input stream 
 (texto\_plano), y devuelve como salida el texto desencriptado
 en otro stream (texto\_encriptado).
 
 El texto plano se parte en bloques del taman~o bloque\_plano (determinado 
-en función de $n$ por el método establecer\_parametros)
+en funciÃ³n de $n$ por el mÃ©todo establecer\_parametros)
 
-Cada bloque se transforma a numero por la función
+Cada bloque se transforma a numero por la funciÃ³n
 
 \begin{verbatim}
 BytesFromZZ((unsigned char*)bloque_encriptado,numero_encriptado,long_bloque_encriptado);
 \end{verbatim}
 
-después se encripta mediante la instrucción 
+despuÃ©s se encripta mediante la instrucciÃ³n 
 
 \begin{verbatim}
 numero_encriptado = PowerMod(numero_plano,clave_publica,n);
 \end{verbatim}
 
-finalmente el número encriptado se convierte a bytes
+finalmente el nÃºmero encriptado se convierte a bytes
 
 \begin{verbatim}
 BytesFromZZ((unsigned char*)bloque_encriptado,numero_encriptado,long_bloque_encriptado);
@@ -331,26 +335,26 @@ como cabecera, y el bloque encriptado.
 
 \item encriptador\_rsa::descifrar
 
-Este método desencripta un texto proveniente de un input stream 
+Este mÃ©todo desencripta un texto proveniente de un input stream 
 (texto\_encriptado), y devuelve como salida el texto desencriptado
 en otro stream (texto\_plano).
 
 Se lee cada bloque proveniente del stream (teniendo en cuenta la cabecera
 de bloque que indica cuantos bytes forman el bloque)
 
-Cada bloque se convierte en un número:
+Cada bloque se convierte en un nÃºmero:
 
 \begin{verbatim}
 numero_encriptado = ZZFromBytes((unsigned char*)bloque_encriptado,long_bloque_encriptado);
 \end{verbatim}
 
-se lo desencripta mediante la instrucción:
+se lo desencripta mediante la instrucciÃ³n:
 
 \begin{verbatim}
 numero_plano = PowerMod(numero_encriptado,clave_privada,n);
 \end{verbatim}
 
-y después se lo transforma en bytes mediante la instrucción
+y despuÃ©s se lo transforma en bytes mediante la instrucciÃ³n
 
 \begin{verbatim}
 BytesFromZZ((unsigned char*)bloque_plano,numero_plano,long_bloque_plano);
@@ -360,12 +364,12 @@ BytesFromZZ((unsigned char*)bloque_plano,numero_plano,long_bloque_plano);
 
 \section{Licencia de Este Documento}
 
-Copyright \@ 2004   Pablo Luis De Nápoli
+Copyright (C) 2004-2012 Pablo Luis De NÃ¡poli
 
 Se garantiza el permiso para copiar, distribuir y/o modificar este documento
-bajo los términos de la Licencia de Documentación Libre GNU, versión 1.1 
+bajo los tÃ©rminos de la Licencia de DocumentaciÃ³n Libre GNU, versiÃ³n 1.1 
 (\htmladdnormallink{GNU Free Documentation License}{http://www.gnu.org/copyleft/fdl.html}, Version 1.2 ) 
-o cualquier otra versión 
+o cualquier otra versiÃ³n 
 posterior publicada por la Free Software Foundation; este documento se 
 presenta sin Secciones Invariables (no Invariant Sections), sin Textos de 
 Tapa (no Front-Cover Texts) y sin Textos de Contratapa (no Back-Cover Texts). 
