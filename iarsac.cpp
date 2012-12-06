@@ -90,12 +90,15 @@ void encriptador_rsa::generar_claves(long longitud)
   ZZ q;
   ZZ phi_n;
 
- // Elegimos (al azar) dos números primos (grandes)
+ // Elegimos (al azar) dos números primos (grandes) distintos
  // ZZ es el tipo de datos "entero grande" de la libreria NTL
-
  
  p = GenPrime_ZZ(longitud);
- q = GenPrime_ZZ(longitud);
+ do 
+ {
+  q = GenPrime_ZZ(longitud);}
+ while (p==q);
+
  n = p*q;
  phi_n = (p-1)*(q-1);
  
